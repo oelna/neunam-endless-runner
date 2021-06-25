@@ -19,12 +19,12 @@ const addBlock = function () { // color, speed, delay
 
 	const block = document.createElement('div');
 
-	const blockType = Math.floor(Math.random() * 2) + 1;
+	const blockType = Math.floor(Math.random() * 3) + 1;
 
 	block.classList.add('block' + blockType);
 	block.classList.add('block');
 
-	const delay = Math.floor(Math.random() * 2) + 1;
+	const delay = (Math.floor(Math.random() * 30) + 1) / 10;
 	block.style.animationDelay = delay + 's';
 
 	game.appendChild(block);
@@ -40,9 +40,6 @@ const startGame = function () {
 		block.remove()
 	}
 
-	//block1.classList.remove('hidden');
-	//block2.classList.remove('hidden');
-	addBlock();
 	addBlock();
 
 	char.hp = 2;
@@ -103,7 +100,7 @@ const startGame = function () {
 		}
 
 		char.score += 1;
-	},10);
+	}, 10);
 }
 
 const endGame = function () {

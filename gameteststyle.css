@@ -1,0 +1,78 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	background-color: #ccc;
+	font-size: 125%;
+}
+
+.hidden {
+	display: none;
+}
+
+#game {
+	margin-left: 5rem;
+	margin-top: 5rem;
+	box-sizing: border-box;
+	width: 25rem;
+	height: 10rem;
+	border-bottom:  3px solid black;
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+#character {
+	width: 20px;
+	height: 50px;
+	background-color: red;
+	position: absolute; /*position lässt Objekte frei positionierenm. relative lässt Objekt trotzdem noch bewegen*/
+	bottom: 0;
+	left: 20px;
+}
+
+#game.running .animate { /*animationsklasse*/
+	animation: jump 500ms;
+}
+
+@keyframes jump {
+	0%{top: 150px}
+	20%{top: 100px;}
+	80%{top: 100px;}
+	100%{top: 150px;}
+}
+
+.block1 {
+	width: 20px;
+	height: 20px;
+	background-color: blue;
+	position: absolute;
+	bottom: 0;
+	left: 480px;
+}
+
+#game.running .block1 {
+	animation: block 1s infinite linear; /*wiederholt 1s lange Animation unendlich*/
+	animation-delay: 0s;
+}
+
+.block2 {
+	width: 20px;
+	height: 20px;
+	background-color: purple;
+	position: absolute;
+	bottom: 0;
+	left: 480px;
+	
+}
+#game.running .block2 {
+	animation: block 1s infinite linear; /*wiederholt 1s lange Animation unendlich*/
+	animation-delay: 0.2s;
+}
+
+@keyframes block{ /*Name der Animation*/
+	0% { left: 480px; } /*Beginn der Animation*/
+	100% { left: -40px; } /*Ende der Animation*/
+}

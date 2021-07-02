@@ -1,0 +1,218 @@
+:root {
+	--unit: 20px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	background-image: url("images/ScreenX.png");
+	background-color: #ccc;
+	
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left top;
+	font-family: 'VT323', monospace;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 180%;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/*.stack-top{
+    z-index: 10;
+}*/
+
+/*.overlay {
+	background-image: url("Gameover.png");
+	background-size: 100%;
+}*/
+
+header {
+	width: 600px;
+}
+
+header img {
+	width: 100%;
+	height: auto;
+}
+
+.elements {
+	margin-left: calc(var(--unit) * 5);
+	width: calc(var(--unit) * 25);
+}
+
+#anleitung{
+	margin-top: 1rem;
+	font-size: 105%;
+}
+
+#currentScore{
+	font-size: 120%;
+}
+
+#topElemente{
+	display: flex;
+	justify-content: space-between;
+	
+	margin-top: 2rem;
+}
+
+#hp-anzeige {
+	display: flex;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	gap: calc(var(--unit) * 1);
+	width: 5rem;
+	height: 1rem;
+	position: relative;
+}
+
+#hp1 {
+	width: calc(var(--unit) * 2);
+	height: calc(var(--unit) * 2);
+	background-image: url("images/pfoten.png");
+	background-size: 100%;
+	image-rendering: pixelated;
+}
+
+#hp2 {
+	width: calc(var(--unit) * 2);
+	height: calc(var(--unit) * 2);
+	background-image: url("images/pfoten.png");
+	background-size: 100%;
+	image-rendering: pixelated;
+}
+
+#game {
+	margin-top: 1rem;
+	box-sizing: border-box;
+	width: 100%;
+	height: 0;
+	border-bottom:  0.15rem solid #00FF3B;
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+/*#gameoverScreen{
+	width: 100%;
+	height: 100%;
+	background-color: red;
+}*/
+
+#character {
+	width: calc(var(--unit) * 1);
+	height: calc(var(--unit) * 2.5);
+	background-image: url("images/character.png");
+	image-rendering: pixelated;
+	background-size: contain;
+	position: absolute; /*position lässt Objekte frei positionierenm.*/
+	bottom: 0;
+	left: calc(var(--unit) * 1.5);
+}
+
+#game.running .animate { /*animationsklasse*/
+	animation: jump 300ms;
+}
+
+@keyframes jump {
+	0%{bottom: 0rem;}
+	10%{bottom: 2rem;}
+	60%{bottom: 3rem;}
+	90%{bottom: 2rem;}
+	100%{bottom: 0rem;}
+}
+
+.block {
+	width: calc(var(--unit) * 0.75);
+	height: calc(var(--unit) * 0.75);
+	left: calc(var(--unit) * 50);
+	position: absolute;
+	bottom: 0;
+	image-rendering: pixelated;
+}
+
+.block1 { background-image: url("images/bullet1.png");
+	background-size: 100%; animation-duration: 1s; }
+.block2 { background-image: url("images/bullet2.png");
+	background-size: 100%; animation-duration: 1.25s; }
+.block3 { background-image: url("images/bullet3.png");
+	background-size: 100%; animation-duration: 1.5s; }
+
+#game.running .block {
+	animation-name: block;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	/*animation: block 1s infinite linear;*/ /*wiederholt 1s lange Animation unendlich*/
+}
+
+@keyframes block { /*Name der Animation*/
+	0% { left: 26rem; } /*Beginn der Animation*/
+	100% { left: -2rem; } /*Ende der Animation*/
+}
+
+#end {
+	position: absolute;
+	/*
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.6);
+	-webkit-backdrop-filter: blur(8px);
+	*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	--width: 10em;
+	width: var(--width);
+	background: white;
+	box-shadow: 0 10px 20px #0004;
+	border-radius: 0.2em;
+	padding: 1em;
+	top: 35vh;
+	left: calc(50vw - (var(--width) / 2));
+}
+
+#end .modal {
+	
+}
+
+#allButtons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1em;
+}
+
+button{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button:hover {
+	color: red;
+}
+
+@media (max-width: 50em) {
+	:root {
+		--unit: 3vw;
+	}
+
+	.elements {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: calc(100% - 20px);
+	}
+}

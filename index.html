@@ -2,23 +2,66 @@
 <html lang="de">
 	<head>
 		<meta charset="utf-8"/>
-		<title>GameTest</title>
-		<link rel="stylesheet" href="gameteststyle.css">
-		<script src="gametestjava.js" defer></script>
+		<title>BunnyHopSurvival</title>
+
+		<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+		<link rel="stylesheet" href="bhsfstyle.css">
+		<script src="bhsfjava.js" defer></script>
 	</head>
 	<body>
-		<button id="start-button">Start</button>
 
-		<div id="game">
-			<div id="character"></div>
-			<div id="block">
+		<!-- <div id="gameoverScreen" class="hidden" class="stack-top"></div> -->
+
+		<header>
+			<img src="images/Title.png" width="100%" height="auto" alt="Title" />
+		</header>
+
+		<div class="elements">
+			<p id="anleitung">Press SPACE to Jump. R to Start/Restart. M to toggle Music.</p>
+
+			<div id="hauptteil">
+				<div id="topElemente">
+					<div id="hp-anzeige">
+						<div id="hp1"></div>
+						<div id="hp2"></div>
+					</div>
+					<p id="currentScore">0.00s</p>
+				</div>
+
+				<div id="game">
+					<div id="character"></div>
+					<div id="block"></div>
+				</div>
 				
+				<div id="allButtons">
+					<button id="start-button">Start</button>
+					<button id="restart-button" class="hidden">Restart</button>
+					<audio id="myAudio" src="audios/Track9.mp3" preload="auto"></audio>
+					<button onClick="togglePlay()">Music
+					</button>
+				</div>
+			</div>
+
+			<div id="audios">
+				<audio id="playSound" src="audios/navigate.mp3" preload="auto"></audio>
+
+				<audio id="deathSound" src="audios/pickup2.mp3" preload="auto"></audio>
+
+				<audio id="jumpSound" src="audios/jump.mp3" preload="auto"></audio>
+
+				<audio id="hitSound" src="audios/hit.mp3" preload="auto"></audio>
 			</div>
 		</div>
 
+		<!-- overlays -->
 		<div id="end" class="hidden">
-			<p>You lost! <span id="score">0</span></p>
-			<button id="restart-button">Restart</button>
+			<div class="modal">
+				<p>Game Over</p>
+				<p><span id="score">0</span></p>
+				<p><span id="bestscore">0</span></p>
+			</div>
 		</div>
+
 	</body>
 </html>
